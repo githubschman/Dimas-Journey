@@ -67,7 +67,7 @@ const comeUpWithResponse = (input, old) => {
     }
 
     for(var j = 0; j < 5; j++){
-        let m = JSON.parse(messages[i])
+        let m = messages[i]
         if(m.user !== 'Compare'){
             responses.push(m)
         }

@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router'
+import { Route, Switch } from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import {cyan500} from 'material-ui/styles/colors';
 import logo from './logo.svg';
+import Chat from './Chat'
 import './App.css';
-
 
 class App extends Component {
 
   render() {
-    let messages = process.env.REACT_APP_MESSAGES.split(' , ')
-    let inputs = process.env.REACT_APP_POSSIBLE_INPUTS.split('^%^')
-    console.log(inputs)
-    let jsonified = JSON.parse(inputs[111]) 
-    console.log(jsonified)
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome</h1>
-          <h1 className="App-title">Well... {}</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Switch>
+        <MuiThemeProvider>
+          <Route exact path="/" component={Chat} />
+        </MuiThemeProvider>
+        </Switch>
       </div>
     );
   }

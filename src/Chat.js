@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
 import { userInput } from './reducer'
@@ -14,8 +15,21 @@ class Chat extends Component {
         message: '',
         canSend: true,
         username: 'U',
-        noName: true
+        noName: true,
       }
+  }
+
+  scrollToBottom = () => {
+    const node = ReactDOM.findDOMNode(this.messagesEnd);
+    node.scrollIntoView({ behavior: "smooth" });
+  }
+  
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+  
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
 
   handleMessage = (e) => {
@@ -28,29 +42,29 @@ class Chat extends Component {
     if(this.state.noName){
         this.setState({username: this.state.message, noName: false})
     }
-    this.setState({message: ''})
     if(this.state.message.length && !this.props.convoOver){
-        this.props.sendMessage(this.state.message)
-        
+        this.props.sendMessage(this.state.message)    
     }
+
+    this.setState({message: ''})
   }
 
   render() {
-
-    
-
-    let messages = this.props.messages, alignment = "left", letter;
+    let messages = this.props.messages, alignment = 'Left', letter;
     return (
     <div>
-      <div className="Chat">
-        <ul>
-            {messages.map((m, i)=> {
-                m.user === 'Me' ? alignment = 'right' : alignment = 'left';
-                m.user !== 'Me' ? letter = m.user[0] : letter = this.state.username[0];
-                return (alignment === 'left' ? <li id={alignment}> <h1>{letter}</h1> {m.message.replace(/URNAME/i, this.state.username)} </li> :
-                <li id={alignment}> {m.message} <h1>{letter}</h1> </li>)
-            })}
-        </ul>
+        <div className="Chat">
+            <ul>
+                {messages.map((m, i)=> {
+                    m.user === 'Me' ? alignment = 'Right' : alignment = 'Left';
+                    m.user !== 'Me' ? letter = m.user[0] : letter = this.state.username[0];
+                    return (alignment === 'Left' ? <li className={alignment} id={i}> <h1>{letter}</h1> {m.message.replace(/URNAME/i, this.state.username).replace(/&#039;/i, '')} </li> :
+                    <li className={alignment} id={i}> {m.message} <h1>{letter.toUpperCase()}</h1> </li>)
+                })}
+                <div style={{ float:"left", clear: "both" }}
+                    ref={(el) => { this.messagesEnd = el; }}>
+                </div>
+            </ul>
         </div>
         <div className="Input">
             <form onSubmit={this.handleSubmit}>
@@ -59,11 +73,10 @@ class Chat extends Component {
                     onChange={this.handleMessage}
                     value={this.state.message}
                 />
- 
                 <RaisedButton type="submit" label="send" primary={true} style={{margin: 12}}/>
             </form>
         </div>
-      </div>
+    </div>
     );
   }
 }

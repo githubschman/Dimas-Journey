@@ -1,6 +1,5 @@
 import {compareTwoStrings as SorensenDice} from 'string-similarity'
 import { createStore } from 'redux';
-import { shuffle } from 'lodash';
 
 const messages = process.env.REACT_APP_MESSAGES.split('^%^')
 const possibleInputs = process.env.REACT_APP_POSSIBLE_INPUTS.split('^%^')
@@ -10,7 +9,7 @@ const nowords = () => {
 }
 
 const okay = () => {
-    let ok = [{user: 'Dima', message: 'wow cool'}, {user: 'Jackie', message: 'intresting?'}, {user: 'Jackie', message: 'um cool!'}, {user: 'Dima', message: 'wow THANK YOU for sharing that'}, {user: 'Jackie', message: '... tmi'}]
+    let ok = [{user: 'Dima', message: 'k'}, {user: 'Jackie', message: 'lol really?'}, {user: 'Dima', message: 'jeez ok'}, {user: 'Jackie', message: 'i dont believe u'}, {user: 'Dima', message: 'kk'}, {user: 'Jackie', message: 'ok lol'}, {user: 'Dima', message: 'lol cool'}, {user: 'Dima', message: 'wow cool'}, {user: 'Jackie', message: 'intresting?'}, {user: 'Jackie', message: 'um cool!'}, {user: 'Dima', message: 'wow THANK YOU for sharing that'}, {user: 'Jackie', message: '... tmi'}]
     return ok[Math.floor(Math.random() * ok.length)]
 }
 
@@ -19,7 +18,7 @@ const initialState = {
     messages: [{user: 'Dima', message: 'hey'}, {user: 'Jackie', message: 'whats ur name again?'}],
     inputs: [],
     over: false,
-    questions: [{user: 'Dima', message: 'URNAME, whats ur favorite pokemon?'}, {user: 'Jackie', message: 'URNAME, whats ur fave food??'}]
+    questions: [{user: 'Dima', message: 'URNAME, whats ur favorite pokemon?'}, {user: 'Jackie', message: 'URNAME, whats ur fave food??'}, {user: 'Jackie', message: 'URNAME, tell us a secret'} , {user: 'Jackie', message: 'URNAME, how do you feel about Taylor Swift??'}, {user: 'Dima', message: 'URNAME, do you think Justin and Selena should get back together?'}, {user: 'Jackie', message: 'URNAME, whats your SIGN? I am a scorpio'}, {user: 'Jackie', message: 'URNAME, what should I eat for lunch?'}, {user: 'Dima', message: 'k gotta go bye!!!!!'}]
 }
 
 

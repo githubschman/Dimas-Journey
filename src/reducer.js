@@ -51,8 +51,7 @@ const reducer = (state = initialState, action) => {
 
 const comeUpWithResponse = (input, old) => {
     let responses = [], i, high = 0, match;
-    possibleInputs.forEach(possible=>{
-        let obj = JSON.parse(possible)
+    possibleInputs.forEach(obj=>{
         let similarity = SorensenDice(input, obj.message); 
 
         if(similarity > high && !old.includes(obj.message)){

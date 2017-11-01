@@ -2,16 +2,30 @@
   text-align: center;
 }
 
-.Chat {
-  height: 100%;
-  background-color: #ffffff;
-  float: center;
-  opacity: .77;
-  padding-top: 20px;
-  padding-left: 100px;
-  padding-right: 300px;
-  padding-bottom: 50px;
+
+
+@media (max-width: 600px) { 
+  .Chat {
+    height: 100%;
+    background-color: #fff;
+    opacity: .77;
+    padding-right: 5px;
+  }
 }
+
+@media (min-width: 601px) { 
+  .Chat {
+    height: 100%;
+    background-color: #ffffff;
+    float: center;
+    opacity: .77;
+    padding-top: 20px;
+    padding-left: 100px;
+    padding-right: 300px;
+    padding-bottom: 50px;
+  }
+}
+
 
 .Input {
   position:fixed;

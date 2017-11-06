@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Patua+One');
+
 .App {
   text-align: center;
 }
-
-
 
 @media (max-width: 600px) { 
   .Chat {
@@ -71,6 +72,11 @@ body {
 
 h1 {
   display: inline-block;
+  font-family: 'Patua One', cursive;
+}
+
+p {
+  font-family: 'Quicksand', sans-serif;
 }
 
 ul {

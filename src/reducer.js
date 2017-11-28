@@ -1,10 +1,8 @@
 import {compareTwoStrings as SorensenDice} from 'string-similarity'
 import { createStore } from 'redux';
 
-// const messages = process.env.REACT_APP_MESSAGES.split('^%^')
-// const possibleInputs = process.env.REACT_APP_POSSIBLE_INPUTS.split('^%^')
-
 import {allMessages, inputs} from './data'
+
 const messages = allMessages
 const possibleInputs = inputs
 
